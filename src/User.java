@@ -77,13 +77,30 @@ public class User {
 			}
 	}
 	public void setFName(String fname) {
-		this.fname = fname;
+		if (fname == User.(fname)) {
+			this.fname = fname;
+		}
+		else {
+			System.out.println("You can not modify your first name.");
+		}
+		
 	}
 	public void setLName(String lname) {
-		this.lname = lname;
+		if (i = i /* fill in something that makes sense */) {
+			this.lname = lname;
+		}
+		else {
+			System.out.println("You can not modify your last name.");
+		}
+		
 	}
 	public void setDOB(String dob) {
-		this.dob = dob;
+		if (i = i /* fill in something that makes sense */) {
+			this.dob = dob;
+		}
+		else {
+			System.out.println("You can not modify your date of birth.");
+		}
 	}
 	public void setAddress(String address) {
 		this.address = address;

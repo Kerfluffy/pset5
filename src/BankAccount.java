@@ -45,7 +45,12 @@ public class BankAccount {
 	public void setUser(User user) {
 		this.user = user;
 	}
-		
+	/**
+	 * Deposits money into this account.
+	 * 
+	 * @param amount the money to deposit
+	 * @return a status code (0: invalid amount, 1: success)
+	 */	
 	public int deposit(double amount) {
 		if (amount <= 0) {
 			return 0;
@@ -55,7 +60,12 @@ public class BankAccount {
 			return 1;
 		}
 	}
-	
+	/**
+	 * Withdraws money from this account.
+	 * 
+	 * @param amount the money to withdraw
+	 * @return a status code (0: insufficient funds, 1: invalid amount, 2: success)
+	 */
 	public int withdraw(double amount) {
 		if (amount > balance) {
 			return 0;

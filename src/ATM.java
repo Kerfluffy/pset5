@@ -28,20 +28,29 @@ public class ATM {
 	}
 	
 	public static BankAccount newAccount() {
-		System.out.println("Enter your personal information below");
-		System.out.print("First Name: ");
-			String fname = in.nextLine(); 
-		System.out.print("Last Name: ");
-			String lname = in.nextLine(); 
-		System.out.print("PIN: ");
+		do {
+		System.out.println("Enter your personal information below.");
+		System.out.println("PIN: ");
 			int pin = in.nextInt();
 			in.nextLine();
-		System.out.print("Date of Birth ");
+		System.out.println("First Name: ");
+			String fname = in.nextLine(); 
+		System.out.println("Last Name: ");
+			String lname = in.nextLine(); 
+		System.out.println("Date of Birth: ");
 			String dob = in.nextLine();
-		System.out.print("Address: ");
+		System.out.println("Address: ");
 			String address = in.nextLine();
+		System.out.println("Phone Number: ");
+			String phone = in.nextLine();
+		System.out.println("City: ");
+			String city = in.nextLine();
+		System.out.println("State: ");
+			String state = in.nextLine();
+		System.out.println("Postal Code: ");
+			int postalCode = in.nextInt();
 		
-		User user = new User(pin, fname, lname, dob, address); 
+		User user = new User(pin, fname, lname, dob, address, phone, city, state, postalCode); 
 		
 		double balance = 0;
 
@@ -50,6 +59,8 @@ public class ATM {
 		in.nextLine();
 
 		return new BankAccount(accountNumber, balance, user);
+		}
+		while (/* if there is no account */);
 	}
 	
 	public void menu() {
@@ -95,8 +106,16 @@ public class ATM {
 			}
 					
 			//Prompt the user for what action to perform
-			System.out.println("Enter 1 to withdraw, enter 2 to deposit, or enter 3 to check balance: ");
-					
+			System.out.println("Enter the corresponding number:");
+			System.out.println("1: Withdraw funds");
+			System.out.println("2: Deposit funds");
+			System.out.println("3: View balance");
+			System.out.println("4: Transfer funds");
+			System.out.println("5: View personal information");
+			System.out.println("6: Update personal information");
+			System.out.println("7: Close account");
+			System.out.println("8: Logout");
+			
 			//loop to check if choice is valid
 			int menuLoop = 0;
 			while (menuLoop == 0) {
@@ -123,6 +142,43 @@ public class ATM {
 					case 3:
 						System.out.println("Current Balance: $" + bankAccount.getBalance());
 						menu();
+					case 4:
+						//Transfer funds
+						System.out.print("Enter amount of funds to transfer: ");
+						double transferAmount = in.nextInt();
+						if (bankAccount.getBalance() == 0) {
+							System.out.println("Insufficient funds. Please try again later");
+						}
+						else {
+							this.bankAccount.setBalance(bankAccount.getBalance() - transferAmount);
+						}
+					case 5:
+						//View personal information
+						System.out.println("Your personal information:");
+						/* In here, you will most likely print the user's: 
+						 * Account Number	
+						 * PIN					
+						 * Balance			
+						 * Last Name		
+						 * First Name		
+						 * Date of Birth	
+						 * Phone Number		
+						 * Street Address	
+						 * City			 	
+						 * State		  	
+						 * Postal Code	  	
+						 * Account Status	
+						 */
+					case 6:
+						//Update personal information
+						System.out.println("What do you want to update?");
+						//you can not modify the first or last name as well as date of birth
+						//list the previous mentioned personal information, give options
+						//once set, loop back to menu
+					case 7:
+						//Close account
+					case 8:
+						//logout
 					default: 
 						System.out.print("That is not a choice. Please try again: ");
 				}
